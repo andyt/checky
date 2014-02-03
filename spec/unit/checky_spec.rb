@@ -7,7 +7,7 @@ describe Checky do
     before { Checky.configure }
     it 'should return configured checks' do
       expect(Checky.checks).to be_a Array
-      expect(Checky.checks.size).to eq 1
+      expect(Checky.checks.size).to eq 2
     end
   end
 end

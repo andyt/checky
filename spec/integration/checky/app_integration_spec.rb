@@ -14,7 +14,7 @@ module Checky
       context 'when unauthorized' do
         it 'should respond with a 401' do
           get '/'
-          expect(last_response.status).to be 401
+          expect(last_response.status).to eq 401
         end
       end
 
@@ -25,8 +25,8 @@ module Checky
 
         it 'should respond with results' do
           get '/'
-          expect(last_response.status).to be 200
-          expect(last_response.body).to eq 'TCP socket connection to example.com:80 (timeout: 15) PASSED'
+          expect(last_response.status).to eq 200
+          expect(last_response.body).to eq "TCP socket connection to example.com:80 (timeout: 15) PASSED\nLoad average max of 3, 3, 3 PASSED"
         end
       end
     end
