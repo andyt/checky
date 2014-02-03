@@ -8,37 +8,21 @@ module Checky
     # However, that might be the desired behaviour.
     class TCPPort < Check
       dsl_method :tcp_port
-      
-      attr :host, :port, :timeout, :result, :error
+
+      attr :host, :port
+
       def initialize(host, port, timeout)
         @host, @port, @timeout = host, port, timeout
       end
 
       def call
-        Timeout.timeout(timeout) do
+        super do
           socket = TCPSocket.new(host, port)
         end
-        @result = true
-      rescue StandardError => e
-        @error = e
-        @result = false
-      end
-
-      def pass?
-        @result
-      end
-
-      def fail?
-        !@result
       end
 
       def to_s
-        'TCP socket connection to %s:%s (timeout: %s) ' % [host, port, timeout] +
-          if pass?
-            'PASSED'
-          else
-            'FAILED (%s)' % error
-          end
+        super('TCP socket connection to %s:%s (timeout: %s)' % [host, port, timeout])
       end
     end
   end
