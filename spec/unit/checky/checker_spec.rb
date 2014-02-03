@@ -17,11 +17,11 @@ module Checky
       end
     end
 
-    describe '#to_json' do
+    describe '#to_a' do
       it 'should collect a result string from each check' do
         expect(check1).to receive(:to_s)
         expect(check2).to receive(:to_s)
-        checker.to_json
+        checker.to_a
       end
     end
   end

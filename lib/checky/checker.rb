@@ -14,7 +14,7 @@ module Checky
       @threads ||= checks.collect { |check| Thread.new { check.call } }
     end
 
-    def to_json
+    def to_a
       checks.map(&:to_s)
     end
 

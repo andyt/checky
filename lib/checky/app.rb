@@ -6,8 +6,8 @@ module Checky
         checker.call
 
         response = Rack::Response.new
-        response.body = checker.to_json
-        response['Content-Type'] = 'application/json'
+        response.body = [checker.to_a.join("\n")]
+        response['Content-Type'] = 'text/plain'
         response.status = checker.pass? ? 200 : 500
 
         response.finish
