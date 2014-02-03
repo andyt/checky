@@ -47,7 +47,7 @@ module Checky
 
       def to_s(base)
         return base unless called?
-        base + (pass? ? ' PASSED' : (error ? 'FAILED (%s)' % error : ' FAILED'))
+        base + (pass? ? ' PASSED' : (error ? ' FAILED (%s)' % error : ' FAILED'))
       end
     end
   end
